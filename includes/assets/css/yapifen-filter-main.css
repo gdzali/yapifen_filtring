@@ -1,38 +1,45 @@
 section#filter-section a.yapifen-filter-title {
   font-family: "Montserrat", Sans-serif;
-  font-size: 32px;
-  color:#04426f;
+  font-size: 27px;
+  color:#155588;
   padding: 0 32px;
   transition: all .25s;
   -webkit-transition: all .25s;
   -moz-transition: all .25s;
   -o-transition: all .25s;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
 
+section#filter-section a.yapifen-filter-title.option-selector {
+display: inline-block;
 }
 
 section#filter-section a.yapifen-filter-title.option-selector:hover {
-  background-color:#04426f;
+  background-color:#155588;
   color:#fff !important;
   transition: all .25s;
   -webkit-transition: all .25s;
   -moz-transition: all .25s;
   -o-transition: all .25s;
   cursor: pointer;
-  padding: 0 64px 0 32px;
-  height: 60px;
   display: inline-block;
+  padding: 0 32px;
 }
 
 section#filter-section .option-table {
-    top: 60px;
-    background: #04426f;
+    top: -3px;
+    background: #155588;
     width: 100%;
     z-index: 200;
     color: #fff;
     margin: 0;
     box-shadow: 3px 3px 5px rgb(50 50 50 / 50%);
     padding: 32px 64px;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    display: none;
+    transition: 0.5s !important;
 }
+
 
 section#filter-section .option-table span.parent-title {
     border-bottom: 1px solid #fff;
@@ -41,6 +48,7 @@ section#filter-section .option-table span.parent-title {
     width: 65% !important;
     padding-bottom: 10px;
     display: block;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
 }
 
 ul.term-items-list {
@@ -48,4 +56,52 @@ ul.term-items-list {
     margin-left: 0px !important;
     list-style-type: none !important;
     padding-inline-start: 0px !important;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
+
+.option-table label {
+  color:#fff !important;
+}
+
+.yapifen-filter-title {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  color: #155588;
+  font-size: 34px;
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+span.parent-title li {
+    list-style-type: none !important;
+}
+
+a#proje-turu-button.clicked {
+    background-color: #155588;
+    color: #fff !important;
+}
+
+a#proje-durumu-button.clicked {
+    background-color: #155588;
+    color: #fff !important;
+}
+
+#table-area thead {
+    background: #155588 !important;
+}
+
+#table-area thead th {
+    color: #fff !important;
+    text-transform: capitalize;
+    font-size: 18px;
+}
+
+div#table-area {
+    margin-top: 35px !important;
+}
+
+div#table-area td {
+    margin-top: 16px !important;
 }
