@@ -53,3 +53,16 @@ require_once( PREFIX_STARTER_PLUGIN_DIR . 'loader.php' );
 
 // Register activation hook (this has to be in the main plugin file or refer bit.ly/2qMbn2O)
 register_activation_hook( __FILE__, 'prefix_activate_plugin' );
+
+// Define path and URL to the ACF plugin.
+define( 'MY_ACF_PATH', PREFIX_STARTER_PLUGIN_DIR . '/includes/acf/' );
+define( 'MY_ACF_URL', PREFIX_STARTER_PLUGIN_URL . '/includes/acf/' );
+
+// Include the ACF plugin.
+include_once( MY_ACF_PATH . 'acf.php' );
+
+// Customize the url setting to fix incorrect asset URLs.
+add_filter('acf/settings/url', 'my_acf_settings_url');
+function my_acf_settings_url( $url ) {
+    return MY_ACF_URL;
+}
