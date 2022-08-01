@@ -1,0 +1,51 @@
+section#filter-section a.yapifen-filter-title {
+  font-family: "Montserrat", Sans-serif;
+  font-size: 32px;
+  color:#04426f;
+  padding: 0 32px;
+  transition: all .25s;
+  -webkit-transition: all .25s;
+  -moz-transition: all .25s;
+  -o-transition: all .25s;
+
+}
+
+section#filter-section a.yapifen-filter-title.option-selector:hover {
+  background-color:#04426f;
+  color:#fff !important;
+  transition: all .25s;
+  -webkit-transition: all .25s;
+  -moz-transition: all .25s;
+  -o-transition: all .25s;
+  cursor: pointer;
+  padding: 0 64px 0 32px;
+  height: 60px;
+  display: inline-block;
+}
+
+section#filter-section .option-table {
+    top: 60px;
+    background: #04426f;
+    width: 100%;
+    z-index: 200;
+    color: #fff;
+    margin: 0;
+    box-shadow: 3px 3px 5px rgb(50 50 50 / 50%);
+    padding: 32px 64px;
+}
+
+section#filter-section .option-table span.parent-title {
+    border-bottom: 1px solid #fff;
+    margin-bottom: 6px;
+    text-align: left !important;
+    width: 65% !important;
+    padding-bottom: 10px;
+    display: block;
+}
+
+ul.term-items-list {
+    margin-top: 20px;
+    margin-left: 0px !important;
+    list-style-type: none !important;
+    padding-inline-start: 0px !important;
+}
