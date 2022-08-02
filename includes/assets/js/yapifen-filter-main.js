@@ -42,8 +42,34 @@ $(function() {
       $('#proje-durumu-table').show();
     }
   });
-  $('#projects_table').DataTable({
+  var table = $('#projects_table').DataTable({
     "searching": false,
-    "lengthChange": false
+    "lengthChange": false,
+    "pageLength":15,
+    "order": [[2, 'desc']]
   });
+
+  $('#yenile').click(function() {
+    $('#projects_table').DataTable().destroy();
+    $('#projects_table').DataTable({
+      "searching": false,
+      "lengthChange": false,
+      "pageLength":15,
+      "order": [[2, 'desc']]
+    }).draw();
+  });
+
+  $('#btn-all').click(function() {
+    $('[data-group="su-enerji"]').prop('checked',true);
+    $('[data-group="ust-yapi"]').prop('checked',true);
+    $('[data-group="ulastirma"]').prop('checked',true);
+  });
+
+  $('#btn-temizle').click(function() {
+    $('[data-group="su-enerji"]').prop('checked',false);
+    $('[data-group="ust-yapi"]').prop('checked',false);
+    $('[data-group="ulastirma"]').prop('checked',false);
+  });
+
+
 });

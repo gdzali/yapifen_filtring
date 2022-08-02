@@ -213,4 +213,6 @@ function proje_durum_tax() {
 }
 add_action( 'init', 'proje_durum_tax', 0 );
 
+
+
 ?>

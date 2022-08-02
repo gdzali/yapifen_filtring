@@ -6,59 +6,10 @@ var mafsForm = mafs.find("form");
 mafsForm.submit(function(e){
     e.preventDefault();
 
-    console.log("form submitted");
+    alert('ajax worked!')
 
-    if(mafsForm.find("#lokasyon :selected").val().length !== 0) {
-        var lokasyon = mafsForm.find("#lokasyon :selected").val();
-    }
-    if(mafsForm.find("#ilan_tipi :selected").val().length !== 0) {
-        var ilan_tipi = mafsForm.find("#ilan_tipi :selected").val();
-    }
-    if(mafsForm.find("#konut :selected").val().length !== 0) {
-        var tip = mafsForm.find("#konut :selected").val();
-    }
-    if(mafsForm.find("#oda :selected").val().length !== 0) {
-        var oda = mafsForm.find("#oda :selected").val();
-    }
-    if(mafsForm.find("#alan :selected").val().length !== 0) {
-        var alan = mafsForm.find("#alan :selected").val();
-    }
-    if(mafsForm.find("#isinma_tipi :selected").val().length !== 0) {
-        var isinma_tipi = mafsForm.find("#isinma_tipi :selected").val();
-    }
-    if(mafsForm.find("#bulundugu_kat :selected").val().length !== 0) {
-        var bulundugu_kat = mafsForm.find("#bulundugu_kat :selected").val();
-    }
-    if(mafsForm.find("#bina_yasi :selected").val().length !== 0) {
-        var bina_yasi = mafsForm.find("#bina_yasi :selected").val();
-    }
-    if(mafsForm.find("#totaldeki_kat_sayisi :selected").val().length !== 0) {
-        var totaldeki_kat_sayisi = mafsForm.find("#totaldeki_kat_sayisi :selected").val();
-    }
-    if(mafsForm.find("#esyali_durumu :selected").val().length !== 0) {
-        var esyali_durumu = mafsForm.find("#esyali_durumu :selected").val();
-    }
-    if(mafsForm.find("#yapi_durumu :selected").val().length !== 0) {
-        var yapi_durumu = mafsForm.find("#yapi_durumu :selected").val();
-    }
-    if(mafsForm.find("#oturma_durumu :selected").val().length !== 0) {
-        var oturma_durumu = mafsForm.find("#oturma_durumu :selected").val();
-    }
-    if(mafsForm.find("#site :selected").val().length !== 0) {
-        var site = mafsForm.find("#site :selected").val();
-    }
-    if(mafsForm.find("#garaj :selected").val().length !== 0) {
-        var garaj = mafsForm.find("#garaj :selected").val();
-    }
-    if(mafsForm.find("#bahce :selected").val().length !== 0) {
-        var bahce = mafsForm.find("#bahce :selected").val();
-    }
-
-    // if(mafsForm.find("#min_fiyat").val().length !== 0) {
-    //     var min_fiyat = mafsForm.find("#min_fiyat").val();
-    // }
-    // if(mafsForm.find("#max_fiyat").val().length !== 0) {
-    //     var max_fiyat = mafsForm.find("#max_fiyat").val();
+    // if(mafsForm.find("#lokasyon :selected").val().length !== 0) {
+    //     var lokasyon = mafsForm.find("#lokasyon :selected").val();
     // }
 
     var data = {

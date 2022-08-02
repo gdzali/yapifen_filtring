@@ -70,45 +70,55 @@ function my_ajax_filter_search_shortcode() {
     my_ajax_filter_search_scripts(); // Added here
 
     ob_start(); ?>
-
-    <form class="#" method="get">
-        <div class="col-12 col-xl-12 option-table" id="proje-turu-table">
+    <div id="my-ajax-filter-search">
+      <form class="#" method="get">
+          <div class="col-12 col-xl-12 option-table" id="proje-turu-table">
+            <div class="row">
+              <div class="col-12 col-xl-4">
+                <span class="parent-title"><li><input type="checkbox" id="ust-yapi" class="group-title" name="ust-yapi" value="Üst Yapı">
+                <label for="ust-yapi">Üst Yapı</label><br></li></span>
+                <ul class="term-items-list">
+                  <?= filter_terms_call('ust-yapi') ?>
+                </ul>
+              </div>
+              <div class="col-12 col-xl-4">
+                <span class="parent-title"><li><input type="checkbox" id="ulastirma" class="group-title" name="ulastirma" value="Ulaştırma">
+                    <label for="ulastirma">Ulaştırma</label><br></li></span>
+                <ul class="term-items-list">
+                    <?= filter_terms_call('ulastirma') ?>
+                </ul>
+              </div>
+              <div class="col-12 col-xl-4">
+                <span class="parent-title"><li><input type="checkbox" id="su-enerji" name="su-enerji" class="group-title" value="Su ve Enerji">
+                    <label for="su-enerji">Su ve Enerji</label><br></li></span>
+                <ul class="term-items-list">
+                  <?= filter_terms_call('su-enerji') ?>
+                </ul>
+              </div>
+            </div>
+            <div class="row btn-area">
+              <div class="col-12 col-xl-2">
+                <a href="#" id="btn-temizle">Temizle</a>
+              </div>
+              <div class="col-12 col-xl-2">
+                <a href="#" id="btn-all">Hepsini Seç</a>
+              </div>
+              <div class="col-12 col-xl-8">
+                <input type="submit" name="uygula" id="btn-apply" value="Uygula">
+              </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-4 option-table" id="proje-durumu-table">
           <div class="row">
-            <div class="col-12 col-xl-4">
-              <span class="parent-title"><li><input type="checkbox" id="ust-yapi" class="group-title" name="ust-yapi" value="Üst Yapı">
-              <label for="ust-yapi">Üst Yapı</label><br></li></span>
+            <div class="col-12 col-4">
               <ul class="term-items-list">
-                <?= filter_terms_call('ust-yapi') ?>
+                <?= filter_terms_call('proje_durum') ?>
               </ul>
             </div>
-            <div class="col-12 col-xl-4">
-              <span class="parent-title"><li><input type="checkbox" id="ulastirma" class="group-title" name="ulastirma" value="Ulaştırma">
-                  <label for="ulastirma">Ulaştırma</label><br></li></span>
-              <ul class="term-items-list">
-                  <?= filter_terms_call('ulastirma') ?>
-              </ul>
-            </div>
-            <div class="col-12 col-xl-4">
-              <span class="parent-title"><li><input type="checkbox" id="su-enerji" name="su-enerji" class="group-title" value="Su ve Enerji">
-                  <label for="su-enerji">Su ve Enerji</label><br></li></span>
-              <ul class="term-items-list">
-                <?= filter_terms_call('su-enerji') ?>
-              </ul>
-            </div>
-          </div>
-
-      </div>
-      <div class="col-12 col-xl-4 option-table" id="proje-durumu-table">
-        <div class="row">
-          <div class="col-12 col-4">
-            <ul class="term-items-list">
-              <?= filter_terms_call('proje_durum') ?>
-            </ul>
           </div>
         </div>
-      </div>
-      </form>
-
+        </form>
+    </div>
     <?php
     return ob_get_clean();
 }
@@ -154,7 +164,7 @@ function my_ajax_filter_search_callback() {
            'terms' => $konut
        );
    }
-   
+
     $search_query = new WP_Query( $args );
 
     if ( $search_query->have_posts() ) {

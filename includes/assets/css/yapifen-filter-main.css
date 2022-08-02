@@ -27,9 +27,8 @@ section#filter-section a.yapifen-filter-title.option-selector:hover {
 }
 
 section#filter-section .option-table {
-    top: -3px;
     background: #155588;
-    width: 100%;
+    width: 81%;
     z-index: 200;
     color: #fff;
     margin: 0;
@@ -38,6 +37,8 @@ section#filter-section .option-table {
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
     display: none;
     transition: 0.5s !important;
+    top: 218px;
+    position: absolute;
 }
 
 
@@ -104,4 +105,48 @@ div#table-area {
 
 div#table-area td {
     margin-top: 16px !important;
+}
+
+.btn-area {
+  margin-top: 35px;
+}
+
+.btn-area a {
+  border: 0;
+    float: right;
+    font-size: 15px;
+    margin: 24px 24px 0 0;
+    line-height: 38px;
+    height: 40px;
+    color: #fff;
+    background-color: #0090d0;
+    width: 160px;
+    text-align: center !important;
+    font-weight: 500;
+}
+
+.btn-area a:hover {
+  background-color: #fff;
+  color: #155588;
+}
+
+.btn-area input#btn-apply {
+  float: right !important;
+  border: 0;
+    float: right;
+    font-size: 15px;
+    margin: 24px 24px 0 0;
+    line-height: 38px;
+    height: 40px;
+    color: #fff;
+    background-color: #0090d0;
+    width: 160px;
+    text-align: center !important;
+    font-weight: 500;
+    border-radius: unset !important;
+}
+
+table.dataTable tbody tr a {
+    color: #212529 !important;
+    font-weight: 500;
 }

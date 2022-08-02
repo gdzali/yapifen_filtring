@@ -23,20 +23,48 @@
             </tr>
         </thead>
         <tbody>
+          <?php
+          // WP_Query arguments
+          $args = array (
+          'post_type'              => array( 'projeler-alt' ),
+          'posts_per_page'         => '-1',
+          );
+
+          // The Query
+          $query = new WP_Query( $args );
+
+          // The Loop
+          if ( $query->have_posts() ) {
+          while ( $query->have_posts() ) {
+            $query->the_post();
+            // Get terms from the post IDs of the above post query
+            $terms = get_the_terms( $post->ID, 'ust-yapi' );
+            $terms_ulastirma = get_the_terms( $post->ID, 'ulastirma' );
+            $terms_su_enerji = get_the_terms( $post->ID, 'su-enerji' );
+            if ( !empty( $terms ) || !empty($terms_ulastirma) || !empty($terms_su_enerji) ){
+                // get the first term
+                $term = array_shift( $terms );
+                $term_ulastirma = array_shift( $terms_ulastirma );
+                $term_su_enerji = array_shift( $terms_su_enerji );
+            } ?>
             <tr>
-                <td>A</td>
-                <td>A</td>
-                <td>1</td>
-                <td>1</td>
+                <td><a href="<?= the_permalink() ?>"><?= the_title(); ?></a></td>
+                <td><?= $term->name ?><?= $term_ulastirma->name ?><?= $term_su_enerji->name ?></td>
+                <td><?= get_field('yil') ?></td>
+                <td><?= get_field('konum') ?></td>
             </tr>
-            <tr>
-                <td>B</td>
-                <td>B</td>
-                <td>2</td>
-                <td>2</td>
-            </tr>
+            <?
+          }
+          } else {
+          // no posts found
+          }
+
+          // Restore original Post Data
+          wp_reset_postdata();
+          ?>
         </tbody>
     </table>
+    <a id="yenile" href="#">YENİLE</a>
     </div>
   </div>
 </section>
