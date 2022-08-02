@@ -5,7 +5,7 @@
  * Description: Yapıfen firması için geliştirilmiş özel wordpress temasıdır.
  * Author: Ali GÜNDÜZ
  * Author URI: https://aliguduz.com
- * Version: 0.1
+ * Version: 0.8
  * Text Domain: yapifen_filtering
  * License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */

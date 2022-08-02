@@ -2,28 +2,36 @@ $(function() {
   $(".group-title").change(function() {
     if(this.checked) {
       var selected_g = $(this).attr('id');
-      if (selected_g == 'ust-yapi') {
-        $('[data-group="ust-yapi"]').prop('checked',true);
-      }
-      if (selected_g == 'ulastirma') {
-        $('[data-group="ulastirma"]').prop('checked',true);
-      }
-      if (selected_g == 'su-enerji') {
-        $('[data-group="su-enerji"]').prop('checked',true);
-      }
+      $('[data-group="'+ selected_g +'"]').prop('checked',true);
     } else {
       var selected_g = $(this).attr('id');
-      if (selected_g == 'ust-yapi') {
-        $('[data-group="ust-yapi"]').prop('checked',false);
-      }
-      if (selected_g == 'ulastirma') {
-        $('[data-group="ulastirma"]').prop('checked',false);
-      }
-      if (selected_g == 'su-enerji') {
-        $('[data-group="su-enerji"]').prop('checked',false);
-      }
+    $('[data-group="'+ selected_g +'"]').prop('checked',false);
     }
-});
+  });
+
+  $('#btn-temizle').click(function() {
+    $('[data-group="su-enerji"]').prop('checked',false);
+    $('[data-group="ulastirma"]').prop('checked',false);
+    $('[data-group="ust-yapi"]').prop('checked',false);
+    $('[data-group="endustriyel"]').prop('checked',false);
+    $('#su-enerji-hidden').val('');
+    $('#ulastirma-hidden').val('');
+    $('#ust-yapi-hidden').val('');
+    $('#endustriyel-hidden').val('');
+  });
+
+  $('.sub-terms').change(function() {
+    var selected_term = this.id;
+    var selected_term_group = $(this).attr('data-group');
+    if (this.checked) {
+      $('#'+selected_term_group+'-hidden').val($('#'+selected_term_group+'-hidden').val() + ',' + selected_term);
+    } else {
+      $('#'+selected_term_group+'-hidden').val($('#'+selected_term_group+'-hidden').val().replace(','+selected_term,''));
+    }
+
+
+  });
+
   $('#proje-turu-button').click(function() {
     if ($(this).hasClass('clicked')) {
       $(this).removeClass('clicked');
@@ -48,6 +56,7 @@ $(function() {
     "pageLength":15,
     "order": [[2, 'desc']]
   });
+ $('#projects_table').show();
 
   $('#yenile').click(function() {
     $('#projects_table').DataTable().destroy();
@@ -63,12 +72,14 @@ $(function() {
     $('[data-group="su-enerji"]').prop('checked',true);
     $('[data-group="ust-yapi"]').prop('checked',true);
     $('[data-group="ulastirma"]').prop('checked',true);
+    $('[data-group="endustriyel"]').prop('checked',true);
   });
 
   $('#btn-temizle').click(function() {
     $('[data-group="su-enerji"]').prop('checked',false);
     $('[data-group="ust-yapi"]').prop('checked',false);
     $('[data-group="ulastirma"]').prop('checked',false);
+    $('[data-group="endustriyel"]').prop('checked',true);
   });
 
 

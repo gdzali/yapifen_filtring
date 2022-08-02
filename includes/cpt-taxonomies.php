@@ -175,6 +175,45 @@ function su_enerji_tax() {
 }
 add_action( 'init', 'su_enerji_tax', 0 );
 
+// Register Custom Taxonomy
+function en_enerji_tax() {
+
+	$labels = array(
+		'name'                       => _x( 'Endüstriyel', 'Taxonomy General Name', 'yapifen' ),
+		'singular_name'              => _x( 'Endüstriyel', 'Taxonomy Singular Name', 'yapifen' ),
+		'menu_name'                  => __( 'Endüstriyel', 'yapifen' ),
+		'all_items'                  => __( 'All Items', 'yapifen' ),
+		'parent_item'                => __( 'Parent Item', 'yapifen' ),
+		'parent_item_colon'          => __( 'Parent Item:', 'yapifen' ),
+		'new_item_name'              => __( 'New Item Name', 'yapifen' ),
+		'add_new_item'               => __( 'Add New Item', 'yapifen' ),
+		'edit_item'                  => __( 'Edit Item', 'yapifen' ),
+		'update_item'                => __( 'Update Item', 'yapifen' ),
+		'view_item'                  => __( 'View Item', 'yapifen' ),
+		'separate_items_with_commas' => __( 'Separate items with commas', 'yapifen' ),
+		'add_or_remove_items'        => __( 'Add or remove items', 'yapifen' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'yapifen' ),
+		'popular_items'              => __( 'Popular Items', 'yapifen' ),
+		'search_items'               => __( 'Search Items', 'yapifen' ),
+		'not_found'                  => __( 'Not Found', 'yapifen' ),
+		'no_terms'                   => __( 'No items', 'yapifen' ),
+		'items_list'                 => __( 'Items list', 'yapifen' ),
+		'items_list_navigation'      => __( 'Items list navigation', 'yapifen' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+	);
+	register_taxonomy( 'endustriyel', array( 'projeler-alt' ), $args );
+
+}
+add_action( 'init', 'en_enerji_tax', 0 );
+
 function proje_durum_tax() {
 
 	$labels = array(

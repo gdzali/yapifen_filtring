@@ -22,7 +22,7 @@
                 <th>Konum</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="data-area">
           <?php
           // WP_Query arguments
           $args = array (
@@ -41,15 +41,17 @@
             $terms = get_the_terms( $post->ID, 'ust-yapi' );
             $terms_ulastirma = get_the_terms( $post->ID, 'ulastirma' );
             $terms_su_enerji = get_the_terms( $post->ID, 'su-enerji' );
+            $terms_endustriyel = get_the_terms( $post->ID, 'endustriyel' );
             if ( !empty( $terms ) || !empty($terms_ulastirma) || !empty($terms_su_enerji) ){
                 // get the first term
                 $term = array_shift( $terms );
                 $term_ulastirma = array_shift( $terms_ulastirma );
                 $term_su_enerji = array_shift( $terms_su_enerji );
+                $term_endustriyel = array_shift( $terms_endustriyel );
             } ?>
             <tr>
                 <td><a href="<?= the_permalink() ?>"><?= the_title(); ?></a></td>
-                <td><?= $term->name ?><?= $term_ulastirma->name ?><?= $term_su_enerji->name ?></td>
+                <td><?= $term->name ?><?= $term_ulastirma->name ?><?= $term_su_enerji->name ?><?= $term_endustriyel->name ?></td>
                 <td><?= get_field('yil') ?></td>
                 <td><?= get_field('konum') ?></td>
             </tr>
@@ -64,7 +66,6 @@
           ?>
         </tbody>
     </table>
-    <a id="yenile" href="#">YENİLE</a>
     </div>
   </div>
 </section>

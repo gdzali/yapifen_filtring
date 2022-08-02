@@ -150,3 +150,7 @@ table.dataTable tbody tr a {
     color: #212529 !important;
     font-weight: 500;
 }
+
+input.hidden-input {
+  display: none !important;
+}

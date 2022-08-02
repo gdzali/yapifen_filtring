@@ -52,7 +52,7 @@ function filter_terms_call( $tax_name ) {
 
   foreach ($terms as $term ) {
     // $last_html .= '<option value='. $term->slug .'>'. $term->name .'</option>';
-    $last_html .= '<li><input type="checkbox" data-group="'. $tax_name . '" id="'. $term->slug .'" name="'. $term->slug .'" value="'. $term->name .'">
+    $last_html .= '<li><input type="checkbox" class="sub-terms" data-group="'. $tax_name . '" id="'. $term->slug .'" name="'. $term->slug .'" value="'. $term->name .'">
         <label for="'. $term->slug .'">'. $term->name .'</label><br></li>';
   }
 
@@ -71,28 +71,40 @@ function my_ajax_filter_search_shortcode() {
 
     ob_start(); ?>
     <div id="my-ajax-filter-search">
-      <form class="#" method="get">
+      <form class="#" method="GET">
+        <input type="text" id="ust-yapi-hidden" name="ust-yapi-hidden" class="hidden-input" value="">
+        <input type="text" id="ulastirma-hidden" name="ulastirma-hidden" class="hidden-input" value="">
+        <input type="text" id="su-enerji-hidden" name="su-enerji-hidden" class="hidden-input" value="">
+        <input type="text" id="endustriyel-hidden" name="endustriyel-hidden" class="hidden-input" value="">
+        <input type="text" id="proje_durum-hidden" name="proje_durum-hidden" class="hidden-input" value="">
           <div class="col-12 col-xl-12 option-table" id="proje-turu-table">
             <div class="row">
-              <div class="col-12 col-xl-4">
+              <div class="col-12 col-xl-3">
                 <span class="parent-title"><li><input type="checkbox" id="ust-yapi" class="group-title" name="ust-yapi" value="Üst Yapı">
                 <label for="ust-yapi">Üst Yapı</label><br></li></span>
                 <ul class="term-items-list">
                   <?= filter_terms_call('ust-yapi') ?>
                 </ul>
               </div>
-              <div class="col-12 col-xl-4">
+              <div class="col-12 col-xl-3">
                 <span class="parent-title"><li><input type="checkbox" id="ulastirma" class="group-title" name="ulastirma" value="Ulaştırma">
                     <label for="ulastirma">Ulaştırma</label><br></li></span>
                 <ul class="term-items-list">
                     <?= filter_terms_call('ulastirma') ?>
                 </ul>
               </div>
-              <div class="col-12 col-xl-4">
+              <div class="col-12 col-xl-3">
                 <span class="parent-title"><li><input type="checkbox" id="su-enerji" name="su-enerji" class="group-title" value="Su ve Enerji">
                     <label for="su-enerji">Su ve Enerji</label><br></li></span>
                 <ul class="term-items-list">
                   <?= filter_terms_call('su-enerji') ?>
+                </ul>
+              </div>
+              <div class="col-12 col-xl-3">
+                <span class="parent-title"><li><input type="checkbox" id="endustriyel" name="endustriyel" class="group-title" value="Endüstriyel">
+                    <label for="endustriyel">Endüstriyel</label><br></li></span>
+                <ul class="term-items-list">
+                  <?= filter_terms_call('endustriyel') ?>
                 </ul>
               </div>
             </div>
@@ -114,9 +126,15 @@ function my_ajax_filter_search_shortcode() {
               <ul class="term-items-list">
                 <?= filter_terms_call('proje_durum') ?>
               </ul>
+              <div class="row btn-area">
+                <div class="col-12 col-xl-2">
+                  <input type="submit" name="uygula" id="btn-apply" value="Uygula">
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
         </form>
     </div>
     <?php
@@ -132,63 +150,101 @@ function my_ajax_filter_search_callback() {
 
     header("Content-Type: application/json");
 
-    $tax_query = array('relation' => 'OR');
+    $tax_query = array('relation' => 'AND');
+    $tax_query_sub = array('relation' => 'OR');
 
-   if(isset($_GET['lokasyon'])) {
-       $lokasyon = sanitize_text_field( $_GET['lokasyon'] );
-       $tax_query[] = array(
-           'taxonomy' => 'lokasyon',
-           'field' => 'slug',
-           'operator' => 'IN',
-           'terms' => $lokasyon
+    if(isset($_GET['ust_yapi'])) {
+         $ust_yapi_hid = sanitize_text_field( $_GET['ust_yapi'] );
+         $tax_query_sub[] = array(
+             'taxonomy' => 'ust-yapi',
+             'field' => 'slug',
+             'operator' => 'IN',
+             'terms' => explode(',',$ust_yapi_hid)
+         );
+    }
 
-       );
-   }
+    if(isset($_GET['ulastirma'])) {
+         $ulastirma_hid = sanitize_text_field( $_GET['ulastirma'] );
+         $tax_query_sub[] = array(
+             'taxonomy' => 'ulastirma',
+             'field' => 'slug',
+             'operator' => 'IN',
+             'terms' => explode(',',$ulastirma_hid)
+         );
+    }
 
-   if(isset($_GET['ilan_tipi'])) {
-       $ilan_tipi = sanitize_text_field( $_GET['ilan_tipi'] );
-       $tax_query[] = array(
-           'taxonomy' => 'ilan_tipi',
-           'field' => 'slug',
-           'operator' => 'IN',
-           'terms' => $ilan_tipi
-       );
-   }
+    if(isset($_GET['su_enerji'])) {
+         $su_enerji_hid = sanitize_text_field( $_GET['su_enerji'] );
+         $tax_query_sub[] = array(
+             'taxonomy' => 'su-enerji',
+             'field' => 'slug',
+             'operator' => 'IN',
+             'terms' => explode(',',$su_enerji_hid)
+         );
+    }
 
-   if(isset($_GET['konut'])) {
-       $konut = sanitize_text_field( $_GET['konut'] );
-       $tax_query[] = array(
-           'taxonomy' => 'tip',
-           'field' => 'slug',
-           'operator' => 'IN',
-           'terms' => $konut
-       );
-   }
+    if(isset($_GET['endustriyel'])) {
+         $endustriyel_hid = sanitize_text_field( $_GET['endustriyel'] );
+         $tax_query_sub[] = array(
+             'taxonomy' => 'endustriyel',
+             'field' => 'slug',
+             'operator' => 'IN',
+             'terms' => explode(',',$endustriyel_hid)
+         );
+    }
+
+    $tax_query[] = $tax_query_sub;
+
+    if(isset($_GET['proje_durum'])) {
+         $proje_durum_hid = sanitize_text_field( $_GET['proje_durum'] );
+         $tax_query[] = array(
+             'taxonomy' => 'proje_durum',
+             'field' => 'slug',
+             'operator' => 'IN',
+             'terms' => explode(',',$proje_durum_hid)
+         );
+    }
+
+    $args = array(
+        'post_type' => 'projeler-alt',
+        'posts_per_page' => -1,
+        'tax_query' => $tax_query
+    );
 
     $search_query = new WP_Query( $args );
+
+    // call to function
+    // file_put_contents('../tax_query.txt', print_r($args, true));
+    file_put_contents('../tax_query.txt', print_r($tax_query, true));
 
     if ( $search_query->have_posts() ) {
 
         $result = array();
 
         while ( $search_query->have_posts() ) {
+            $terms = get_the_terms( $post->ID, 'ust-yapi' );
+            $terms_ulastirma = get_the_terms( $post->ID, 'ulastirma' );
+            $terms_su_enerji = get_the_terms( $post->ID, 'su-enerji' );
+            $terms_endustriyel = get_the_terms( $post->ID, 'endustriyel' );
+            $term = array_shift( $terms );
+            $return_html=null;
+            $return_html .= $term->name;
+            $term_ulastirma = array_shift( $terms_ulastirma );
+            $return_html .= $term_ulastirma->name;
+            $term_su_enerji = array_shift( $terms_su_enerji );
+            $return_html .= $term_su_enerji->name;
+            $term_endustriyel = array_shift( $terms_endustriyel );
+            $return_html .= $term_endustriyel->name;
 
             $search_query->the_post();
-            $cats = strip_tags( get_the_category_list(", ") );
             $result[] = array(
                 "id" => get_the_ID(),
                 "title" => get_the_title(),
                 "content" => get_the_content(),
                 "permalink" => get_permalink(),
-                "oda" => get_field('oda_sayisi')->name,
-                "alan" => get_field('alan')->name,
-                "tip" => get_field('tip')->name,
-                "ilan_tipi" => get_field('ilan_tipi')->name,
-                "lokasyon" => get_field('lokasyon')->name,
-                "banyo_sayisi" => get_field('banyo_sayisi')->name,
-                "fiyat" => get_field('proje_fiyati'),
-                "pdf" => get_field('proje_detay_dosyasi'),
-                "poster" => wp_get_attachment_url(get_post_thumbnail_id($post->ID),'full')
+                "konum" => get_field('konum'),
+                "yil" => get_field('yil'),
+                "kategori" => $return_html
             );
 
         }
