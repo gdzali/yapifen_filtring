@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Yapıfen Filtering
  * Plugin URI: https://yapifen.com.tr
- * Description: Yapıfen firması için geliştirilmiş özel wordpress temasıdır.
+ * Description: Yapıfen firması için geliştirilmiş özel wordpress eklentisidir.
  * Author: Ali GÜNDÜZ
  * Author URI: https://aliguduz.com
  * Version: 0.8
