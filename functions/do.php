@@ -259,3 +259,15 @@ function my_ajax_filter_search_callback() {
     }
     wp_die();
 }
+
+
+add_filter( 'single_template', 'override_single_template' );
+function override_single_template( $single_template ){
+    global $post;
+
+    $file = PREFIX_STARTER_PLUGIN_DIR .'includes/single-'. $post->post_type .'.php';
+
+    if( file_exists( $file ) ) $single_template = $file;
+
+    return $single_template;
+}

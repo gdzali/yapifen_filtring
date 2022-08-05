@@ -154,3 +154,54 @@ table.dataTable tbody tr a {
 input.hidden-input {
   display: none !important;
 }
+
+.projects-single {
+  padding:90px 60px;
+}
+
+.projects-sidebar {
+  box-shadow: 0px 0px 12px 0px rgb(0 0 0 / 13%);
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+  margin: 0px 0px 20px 0px;
+  padding: 30px 30px 30px 30px;
+  background: #fff !important;
+}
+
+.projects-sidebar .main-title {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  color: #04426f;
+  font-size: 26px;
+}
+
+.main-content-area {
+  padding-right: 20px;
+}
+
+.main-content-area h1 {
+  margin-bottom: 20px;
+}
+
+.main-content-area h2 {
+  color: var( --e-global-color-secondary );
+    font-family: "Roboto", Sans-serif;
+    font-size: 1.7em;
+    font-weight: 500;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.projects-sub .title {
+  margin-bottom: 10px;
+}
+
+.projects-sub {
+  padding:20px 0px;
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  border-color: rgba(119,119,119,0.15);
+}
+
+.projects-sidebar .socials-share {
+  padding:40px 0px 20px 0px;
+}

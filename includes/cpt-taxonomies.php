@@ -52,6 +52,7 @@ function yapifen_projeler_cpt() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
     'menu_icon'           => 'dashicons-format-aside',
+		'rewrite' => array('slug' => 'projeler'),
 	);
 	register_post_type( 'projeler-alt', $args );
 
