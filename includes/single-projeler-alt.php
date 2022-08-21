@@ -5,7 +5,16 @@
 }
 
 section.elementor-section.elementor-top-section.elementor-element.elementor-element-119173b.elementor-section-full_width.elementor-section-content-top.xts-section-stretch-content.elementor-section-height-default.elementor-section-height-default {
-  background-image: url(http://yapifen-filtering.local/wp-content/uploads/2022/06/havuzlu-BUYUK2.jpg);
+  <?php
+  if (get_field('ust_gorsel')) {
+    ?>background-image: url(<?= get_field('ust_gorsel') ?>);
+    <?
+  } else {
+    ?>
+    background-image: url(http://yapifen-filtering.local/wp-content/uploads/2022/06/havuzlu-BUYUK2.jpg);
+    <?
+  }
+  ?>
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -52,8 +61,63 @@ foreach ($post_term_4 as $endustriyel_term) {
             <div class="col-12 col-xl-8">
               <div class="main-content-area">
                 <h1><?= the_title(); ?></h1>
+                <?php if (get_field('one_cikarilmis_baslik')): ?>
+                    <span class="highlighted">“<?= get_field('one_cikarilmis_baslik') ?>”</span>
+                <?php endif; ?>
                 <?= the_content(); ?>
+                <?php if (get_field('galeri')): ?>
+                  <?php
+                  $images = get_field('galeri');
+                  $size = 'full';
+                  $gallery_ct = 0;
+                  if ($images) {
+                    ?>
+                    <div class="gallery-area">
+                      <?php
+                      foreach ($images as $image) {
+                        $gallery_ct = $gallery_ct + 1;
+                        if ($gallery_ct == 1) {
+                          ?>
+                          <div class="first-image xts-image-gallery xts-row xts-row-1 xts-row-spacing-20 xts-textalign-left xts-items-start xts-photoswipe-images xts-lightbox-gallery xts-caption-lightbox xts-masonry-layout xts-autoplay-animations-off" data-animation-delay="" style="position: relative; height: 396.859px;">
+            								<div class="xts-col" style="position: absolute; left: 0px; top: 0px;">
+            										<figure class="xts-image">
+            											<a href="<?= $image['url'] ?>" class="xts-image-inner" data-width="1920" data-height="1080" data-index="0" data-elementor-open-lightbox="no">
+            									       <img src="<?= $image['url'] ?>" title="" alt="BUYUK">
+            											</a>
+            										</figure>
+            								</div>
+            							</div>
+                          <?
+                        }
+                      }
+                      ?>
+                      <div class="xts-image-gallery xts-row xts-row-lg-2 xts-row-1 xts-row-spacing-20 xts-textalign-left xts-items-center xts-photoswipe-images xts-images-global-lightbox xts-lightbox-gallery xts-caption-lightbox xts-autoplay-animations-off" data-animation-delay="">
+                      <?php
+                      $gallery_ct_1 = 0;
+                      foreach ($images as $image) {
+                        $gallery_ct_1 = $gallery_ct_1 + 1;
+                        if ($gallery_ct_1 >= 2) {
+                          ?>
+                          <div class="xts-col">
+        										<figure class="xts-image">
+        											<a href="<?= $image['url'] ?>" class="xts-image-inner" data-width="1000" data-height="667" data-index="0" data-elementor-open-lightbox="no">
+        									      <img src="<?= $image['url'] ?>" title="" alt="Aviapark kucuk 2">
+        											</a>
+        										</figure>
+        									</div>
+                          <?
+                        }
+                      }
+                      ?>
+                      </div>
+                    </div>
+                    <?
+                  }
+                  ?>
+                <?php endif; ?>
               </div>
+
+
             </div>
             <div class="col-12 col-xl-4 projects-sidebar xts-sticky-column">
               <span class="main-title">Project Details</span>

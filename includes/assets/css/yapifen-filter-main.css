@@ -165,6 +165,7 @@ input.hidden-input {
   margin: 0px 0px 20px 0px;
   padding: 30px 30px 30px 30px;
   background: #fff !important;
+  height: 600px;
 }
 
 .projects-sidebar .main-title {
@@ -204,4 +205,19 @@ input.hidden-input {
 
 .projects-sidebar .socials-share {
   padding:40px 0px 20px 0px;
+}
+
+.main-content-area .highlighted {
+  font-size:27.2px !important;
+  line-height: 38.08px;
+  font-weight: 500;
+  color: #52a8f2;
+  font-style: italic !important;
+  font-family: 'Roboto' !important;
+  padding-bottom: 20px !important;
+  display: block !important;
+}
+
+.gallery-area .first-image {
+    margin-top: 20px;
 }
