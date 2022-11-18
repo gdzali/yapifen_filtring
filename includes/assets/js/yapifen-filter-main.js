@@ -28,11 +28,16 @@ $(function() {
     } else {
       $('#'+selected_term_group+'-hidden').val($('#'+selected_term_group+'-hidden').val().replace(','+selected_term,''));
     }
-
-
   });
 
+  $('.option-selector').click(function() {
+      console.log($(this).id);
+  });
+
+
   $('#proje-turu-button').click(function() {
+    $('.option-table').hide();
+    $('.clicked').removeClass('clicked');
     if ($(this).hasClass('clicked')) {
       $(this).removeClass('clicked');
       $('#proje-turu-table').hide();
@@ -41,7 +46,15 @@ $(function() {
       $('#proje-turu-table').show();
     }
   });
+
+  $('input#btn-apply').click(function() {
+    $('.option-table').hide();
+    $('.clicked').removeClass('clicked');
+  });
+
   $('#proje-durumu-button').click(function() {
+    $('.option-table').hide();
+    $('.clicked').removeClass('clicked');
     if ($(this).hasClass('clicked')) {
       $(this).removeClass('clicked');
       $('#proje-durumu-table').hide();
@@ -50,9 +63,22 @@ $(function() {
       $('#proje-durumu-table').show();
     }
   });
+
+  $('#proje-location-button').click(function() {
+    $('.option-table').hide();
+    $('.clicked').removeClass('clicked');
+    if ($(this).hasClass('clicked')) {
+      $(this).removeClass('clicked');
+      $('#proje-location-table').hide();
+    } else {
+      $(this).addClass('clicked');
+      $('#proje-location-table').show();
+    }
+  });
   var table = $('#projects_table').DataTable({
     "searching": false,
     "lengthChange": false,
+    "info":false,
     "pageLength":15,
     "order": [[2, 'desc']]
   });
@@ -63,6 +89,7 @@ $(function() {
     $('#projects_table').DataTable({
       "searching": false,
       "lengthChange": false,
+      "info":false,
       "pageLength":15,
       "order": [[2, 'desc']]
     }).draw();

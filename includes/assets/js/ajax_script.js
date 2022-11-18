@@ -51,6 +51,7 @@ mafsForm.submit(function(e){
                     $('#projects_table').DataTable({
                       "searching": false,
                       "lengthChange": false,
+                      "info":false,
                       "pageLength":15,
                       "order": [[2, 'desc']]
                     }).draw();
@@ -58,10 +59,10 @@ mafsForm.submit(function(e){
                     var html  = "<p>Aramanıza eşleşen bir proje bulunamadı.</p>";
                     alert('html');
                 }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("Status: " + textStatus); alert("Error: " + errorThrown); 
             }
         });
 
-// we will add codes above this line later
 });
-
-//Onload

@@ -1,14 +1,17 @@
 <section id="filter-section">
   <div class="container">
     <div class="row" class="filtering-area">
-      <div class="col-12 col-xl-4">
-        <span class="yapifen-filter-title">Filtreleme</span>
+      <div class="col-12 col-xl-3">
+        <span class="yapifen-filter-title">Filtering</span>
       </div>
-      <div class="col-12 col-xl-4" style="padding-top: 7px;" >
-        <a class="yapifen-filter-title option-selector" id="proje-turu-button">Proje Türü</a>
+      <div class="col-12 col-xl-3" style="padding-top: 7px;" >
+        <a class="yapifen-filter-title option-selector" id="proje-turu-button">Project Type</a>
       </div>
-      <div class="col-12 col-xl-4" style="padding-top: 7px;" >
-        <a class="yapifen-filter-title option-selector" id="proje-durumu-button">Proje Durumu</a>
+      <div class="col-12 col-xl-3" style="padding-top: 7px;" >
+        <a class="yapifen-filter-title option-selector" id="proje-location-button">Project Location</a>
+      </div>
+      <div class="col-12 col-xl-3" style="padding-top: 7px;" >
+        <a class="yapifen-filter-title option-selector" id="proje-durumu-button">Project Status</a>
       </div>
       <?= do_shortcode('[my_ajax_filter_search]'); ?>
     </div>
@@ -16,17 +19,17 @@
       <table id="projects_table" class="table table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>Proje Başlığı</th>
-                <th>Kategori</th>
-                <th>Yıl</th>
-                <th>Konum</th>
+                <th>Project Title</th>
+                <th>Category</th>
+                <th>Year</th>
+                <th>Location</th>
             </tr>
         </thead>
         <tbody class="data-area">
           <?php
           // WP_Query arguments
           $args = array (
-          'post_type'              => array( 'projeler-alt' ),
+          'post_type'              => array( 'project' ),
           'posts_per_page'         => '-1',
           );
 

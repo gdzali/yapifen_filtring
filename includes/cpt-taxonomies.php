@@ -52,9 +52,8 @@ function yapifen_projeler_cpt() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
     'menu_icon'           => 'dashicons-format-aside',
-		'rewrite' => array('slug' => 'projeler'),
 	);
-	register_post_type( 'projeler-alt', $args );
+	register_post_type( 'project', $args );
 
 }
 add_action( 'init', 'yapifen_projeler_cpt', 0 );
@@ -93,7 +92,7 @@ function ust_yapi_tax() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
 	);
-	register_taxonomy( 'ust-yapi', array( 'projeler-alt' ), $args );
+	register_taxonomy( 'ust-yapi', array( 'project' ), $args );
 
 }
 add_action( 'init', 'ust_yapi_tax', 0 );
@@ -132,7 +131,7 @@ function ulastirma_tax() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
 	);
-	register_taxonomy( 'ulastirma', array( 'projeler-alt' ), $args );
+	register_taxonomy( 'ulastirma', array( 'project' ), $args );
 
 }
 add_action( 'init', 'ulastirma_tax', 0 );
@@ -171,7 +170,7 @@ function su_enerji_tax() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
 	);
-	register_taxonomy( 'su-enerji', array( 'projeler-alt' ), $args );
+	register_taxonomy( 'su-enerji', array( 'project' ), $args );
 
 }
 add_action( 'init', 'su_enerji_tax', 0 );
@@ -210,7 +209,7 @@ function en_enerji_tax() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
 	);
-	register_taxonomy( 'endustriyel', array( 'projeler-alt' ), $args );
+	register_taxonomy( 'endustriyel', array( 'project' ), $args );
 
 }
 add_action( 'init', 'en_enerji_tax', 0 );
@@ -248,10 +247,48 @@ function proje_durum_tax() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
 	);
-	register_taxonomy( 'proje_durum', array( 'projeler-alt' ), $args );
+	register_taxonomy( 'proje_durum', array( 'project' ), $args );
 
 }
 add_action( 'init', 'proje_durum_tax', 0 );
+
+function proje_lokasyon_tax() {
+
+	$labels = array(
+		'name'                       => _x( 'Project Location', 'Taxonomy General Name', 'yapifen' ),
+		'singular_name'              => _x( 'Project Location', 'Taxonomy Singular Name', 'yapifen' ),
+		'menu_name'                  => __( 'Project Location', 'yapifen' ),
+		'all_items'                  => __( 'All Items', 'yapifen' ),
+		'parent_item'                => __( 'Parent Item', 'yapifen' ),
+		'parent_item_colon'          => __( 'Parent Item:', 'yapifen' ),
+		'new_item_name'              => __( 'New Item Name', 'yapifen' ),
+		'add_new_item'               => __( 'Add New Item', 'yapifen' ),
+		'edit_item'                  => __( 'Edit Item', 'yapifen' ),
+		'update_item'                => __( 'Update Item', 'yapifen' ),
+		'view_item'                  => __( 'View Item', 'yapifen' ),
+		'separate_items_with_commas' => __( 'Separate items with commas', 'yapifen' ),
+		'add_or_remove_items'        => __( 'Add or remove items', 'yapifen' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'yapifen' ),
+		'popular_items'              => __( 'Popular Items', 'yapifen' ),
+		'search_items'               => __( 'Search Items', 'yapifen' ),
+		'not_found'                  => __( 'Not Found', 'yapifen' ),
+		'no_terms'                   => __( 'No items', 'yapifen' ),
+		'items_list'                 => __( 'Items list', 'yapifen' ),
+		'items_list_navigation'      => __( 'Items list navigation', 'yapifen' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+	);
+	register_taxonomy( 'projec_lokasyon', array( 'project' ), $args );
+
+}
+add_action( 'init', 'proje_lokasyon_tax', 0 );
 
 
 

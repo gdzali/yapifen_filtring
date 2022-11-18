@@ -5,7 +5,7 @@
  * Description: Yapıfen firması için geliştirilmiş özel wordpress eklentisidir.
  * Author: Ali GÜNDÜZ
  * Author URI: https://aliguduz.com
- * Version: 0.9.2
+ * Version: 1.5.1
  * Text Domain: yapifen_filtering
  * License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
